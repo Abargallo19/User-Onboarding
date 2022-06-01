@@ -1,8 +1,8 @@
 import { React } from 'react';
 
 
-const userForm = () => {
-
+const userForm = (props) => {
+const { values } = props;
 
 
 
@@ -10,7 +10,7 @@ const userForm = () => {
 
    return (
 <form>
-    
+
 </form>
 
    ) 
