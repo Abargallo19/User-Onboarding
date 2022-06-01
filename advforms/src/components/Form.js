@@ -1,10 +1,21 @@
 import { React } from 'react';
 
 
-const Form = () => {
+const userForm = () => {
 
+
+
+
+
+
+   return (
+<form>
+    
+</form>
+
+   ) 
 
 };
 
 
-export default Form;
+export default userForm;
