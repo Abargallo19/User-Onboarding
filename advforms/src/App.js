@@ -8,17 +8,15 @@ import * as yup from 'yup';
 
 const initialFormValues = {
 
-first_name: '',
-last_name: '',
+username: '',
 email: '',
 password: '',
-terms_of_service: false 
+tos: false 
 };
 
 const initialFormErrors = {
 
-first_name: '',
-last_name: '',
+username:'',
 email: '',
 password: ''
 };
@@ -50,9 +48,16 @@ const postNewUser = newUser => {
 
 };
 
+const validate = (name, value) => {
+  yup.reach(schema, name).validate(value)
+  .then(() => setFormErrors({...formErrors, [name]: ''}))
+  .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
+}
+
 
 //input changes
 const inputChange = (name, value) => {
+  validate(name, value);
   setFormValues({...formValues, [name]: value});
 }
 
@@ -60,19 +65,18 @@ const inputChange = (name, value) => {
 //formsubmit
 const formSubmit = () => {
   const newUser = {
-    first_name: formValues.first_name.trim(),
-    last_name: formValues.last_name.trim(),
+    username: formValues.username.trim(),
     email: formValues.email.trim(),
-    password: formValues.password.trim()
+    password: formValues.password.trim(),
+    tos: !initialDisabled
   }
 postNewUser(newUser);
 }
 
 
-//useeffect
-// useEffect(() => {
-//   schema.isValid(formValues).then(valid => setDisabled(!valid))
-// }, [formValues])
+useEffect(() => {
+  schema.isValid(formValues).then(valid => setDisabled(!valid))
+}, [formValues])
 
 
 

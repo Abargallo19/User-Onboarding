@@ -2,7 +2,8 @@ import { React } from 'react';
 
 
 const userForm = (props) => {
-const { values, errors, disabled, change, submit} = props;
+const { errors, disabled, change, submit} = props;
+const { username, email, password, tos } = props.values
 
 const onChange = evt => {
     const {name, value, checked, type } = evt.target;
@@ -19,17 +20,23 @@ const onSubmit = evt => {
    return (
 <form className= 'form-container' onSubmit={onSubmit}>
 <h3>Hey Newbie!</h3>
+<p>{errors.username}</p>
+<p>{errors.password}</p>
+<p>{errors.email}</p>
+<p>{errors.tos}</p>
+
 <div className= 'inputs'>
-    <label>First Name
+    <label>Username
         <input
+        value={username}
         onChange= {onChange}
         type='text'
-        name= 'first name'
+        name= 'username'
         />
     </label>
     <label>email
         <input 
-        value = {values.email}
+        value = {email}
         onChange = {onChange}
         name = 'email'
         type = 'text'
@@ -39,12 +46,22 @@ const onSubmit = evt => {
         <input 
         type = 'checkbox'
         name = 'tos'
-        checked = {checked}
+        checked = {tos}
         onChange = {onChange}
         />
-        <input type = 'submit' value = 'create a user'/>
+        
 
     </label>
+    <label>password
+        <input 
+        type='password'
+        name= 'password'
+        onChange= {onChange}
+        value= {password}
+        />
+        
+    </label>
+    <input disabled={disabled} type = 'submit' value = 'create a user'/>
 
 </div>
 
