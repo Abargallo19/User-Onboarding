@@ -35,6 +35,16 @@ const onSubmit = evt => {
         type = 'text'
         />
     </label>
+    <label>Terms of Service
+        <input 
+        type = 'checkbox'
+        name = 'tos'
+        checked = {checked}
+        onChange = {onChange}
+        />
+        <input type = 'submit' value = 'create a user'/>
+
+    </label>
 
 </div>
 
