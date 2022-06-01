@@ -37,8 +37,6 @@ const [disabled, setDisabled] = useState(initialDisabled);
 const [users, setUsers] = useState(initialUsers);
 
 
-// [get]
-//axios.get()
 
 //[post]
 const postNewUser = newUser => {
@@ -72,7 +70,9 @@ postNewUser(newUser);
 
 
 //useeffect
-
+// useEffect(() => {
+//   schema.isValid(formValues).then(valid => setDisabled(!valid))
+// }, [formValues])
 
 
 
@@ -85,7 +85,9 @@ postNewUser(newUser);
      errors = {formErrors}
      disabled = {disabled}
      submit = {formSubmit}
+     change = {inputChange}
      />
+
 
 
     </div>
